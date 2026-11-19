@@ -12,7 +12,8 @@ For EVERY function in the file:
 Look especially for:
 - a wrong operator: + instead of *, == 1 instead of == 0, n + 2 instead of n * 2
 - a wrong limit: > instead of >=, < instead of <=. Always test the value EXACTLY at the limit from the docstring.
-- a wrong variable: for example low used where it should be high- words like "at least", "or more", "minimum" mean >=, not >. "at least 8 characters" means len(...) >= 8, so a string of exactly 8 characters must be accepted.
+- a wrong variable: for example low used where it should be high
+- words like "at least", "or more", "minimum" mean >=, not >. "at least 8 characters" means len(...) >= 8, so a string of exactly 8 characters must be accepted
 
 Write one block per bug, in EXACTLY this format, and nothing else:
 

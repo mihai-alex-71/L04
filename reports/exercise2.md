@@ -1,9 +1,16 @@
 # Bug reports for exercise2.py
 
+Line: 3
+Problem: is_passing returns False for a grade of exactly 5, but the docstring says "5 or more".
+Example: is_passing(5) returns False, expected True.
+Fix: return grade >= 5
+
 Line: 8
-Problem: is_valid_password fails for passwords with exactly 8 characters and no digits, but the docstring says "at least 8 characters and at least one digit". The condition "len(password) >= 8" is correct, but "any(c.isdigit() for c in password)" is not sufficient when the password has exactly 8 characters and no digits — it will return False, which is correct, but the docstring requires at least one digit, so the function must return False in such cases. However, the issue is not in the logic — the function is correct. There is no bug.  
-Fix: (no fix needed)
+Problem: is_valid_password requires "at least 8 characters", which means length >= 8, but the code uses > 8.
+Example: is_valid_password("12345678") returns False, expected True.
+Fix: return len(password) >= 8 and any(c.isdigit() for c in password)
 
 Line: 12
-Problem: clamp returns max(low, min(x, high)), which is correct for clamping x to the range [low, high]. The docstring says "x, limited to the range from low to high", and this function correctly ensures x is at least low and at most high. There is no bug.  
-Fix: (no fix needed)
+Problem: clamp uses min(x, low) which can cause incorrect clamping when x is below low; it should use min(x, high) to cap at high.
+Example: clamp(3, 1, 10) returns 1, expected 3 (since 3 is above low but below high, should return 3).
+Fix: return max(low, min(x, high))
